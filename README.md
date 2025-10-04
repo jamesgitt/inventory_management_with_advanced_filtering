@@ -106,5 +106,5 @@ You can use [Postman](https://www.postman.com/) or any API client to test the en
 
 ---
 
-**Tip:**  
+**Do this:**  
 For all POST/PATCH requests, set the `Content-Type` header to `application/json` in Postman.
