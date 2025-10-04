@@ -1,17 +1,26 @@
+// Load environment variables from .env file
+require('dotenv').config();
+
+// Import Express framework
 const express = require('express');
-const dotenv = require('dotenv');
-dotenv.config();
 
+// Import the products router
+const productsRouter = require('./db/routes/products');
+
+// Create an Express application
 const app = express();
-const PORT = process.env.PORT || 3000;
 
+// Middleware to parse JSON request bodies
 app.use(express.json());
 
-// Example route test
-app.get('/', (req, res) => res.send('API running...'));
+// Mount the products router at /api/products
+app.use('/api/products', productsRouter);
 
-// Import and use routes
-// const productRoutes = require('./routes/productRoutes');
-// app.use('/api/products', productRoutes);
+// Health check endpoint
+app.get('/', (req, res) => res.json({ ok: true }));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Set the port from environment variable or default to 3000
+const PORT = process.env.PORT || 3000;
+
+// Start the server and listen on the specified port
+app.listen(PORT, () => console.log(`Server started on ${PORT}`));
