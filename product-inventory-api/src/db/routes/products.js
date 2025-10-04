@@ -21,7 +21,4 @@ router.delete('/:id', controller.deleteProduct);
 // This endpoint uses transaction management to ensure atomicity
 router.post('/:id/stock', controller.adjustStock);
 
-// Create a new tag (POST /api/tags)
-router.post('/tags', controller.createTag);
-
 module.exports = router;

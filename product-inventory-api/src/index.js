@@ -4,8 +4,9 @@ require('dotenv').config();
 // Import Express framework
 const express = require('express');
 
-// Import the products router
+// Import the routers
 const productsRouter = require('./db/routes/products');
+const tagsRouter = require('./db/routes/tags');
 
 // Create an Express application
 const app = express();
@@ -13,8 +14,9 @@ const app = express();
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
-// Mount the products router at /api/products
+// Mount the routers
 app.use('/api/products', productsRouter);
+app.use('/api/tags', tagsRouter);
 
 // Health check endpoint
 app.get('/', (req, res) => res.json({ ok: true }));
